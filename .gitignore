@@ -1,0 +1,30 @@
+# Ignore object files and binaries
+*.o
+*.out
+*.exe
+batinfo
+
+# Ignore backup and temporary files
+*~
+*.swp
+*.bak
+*.tmp
+
+# Ignore build directories
+/build
+/bin
+/obj
+
+# Ignore generated files
+*.log
+*.dSYM
+*.stackdump
+*.DS_Store
+
+# Ignore the man page compressed version
+batinfo.1.gz
+
+# Ignore ctags and other IDE specific files
+tags
+.vscode/
+.idea/
