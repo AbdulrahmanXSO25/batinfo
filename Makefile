@@ -16,10 +16,9 @@ $(TARGET): $(SRCS)
 
 # Install the binary and the man page to the specified directories
 install: $(TARGET) $(MANPAGE)
-	install -Dm755 $(TARGET) $(DESTDIR)$(BINDIR)/$(TARGET)
-	install -Dm644 $(MANPAGE) $(DESTDIR)$(MANDIR)/$(MANPAGE)
-	gzip -f $(DESTDIR)$(MANDIR)/$(MANPAGE)  # Compress the man page
-	$(MAKE) clean
+	install -v -Dm755 $(TARGET) $(BINDIR)/$(TARGET)
+	install -v -Dm644 $(MANPAGE) $(MANDIR)/$(MANPAGE)
+	gzip -fv $(MANDIR)/$(MANPAGE)
 
 # Clean up the build
 clean:

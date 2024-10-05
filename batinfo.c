@@ -230,8 +230,12 @@ uint16_t parse_args(int argc, char* argv[]) {
     uint16_t options_mask = 0;
     for (int i = 1; i < argc; i++) {
         for (size_t j = 0; j < sizeof(options)/sizeof(Option); j++) {
-            if (strcmp(argv[i], options[j].long_opt) == 0 ||
-                (argv[i][0] == '-' && argv[i][1] == options[j].short_opt)) {
+            if (strncmp(argv[i], "--", 2) == 0 && strcmp(&argv[i][2], options[j].long_opt) == 0) {
+                options_mask |= options[j].bitmask;
+                break;
+            }
+            /* Check for options abbreviations (e.g., -v) */
+            else if (argv[i][0] == '-' && argv[i][1] == options[j].short_opt && argv[i][2] == '\0') {
                 options_mask |= options[j].bitmask;
                 break;
             }
